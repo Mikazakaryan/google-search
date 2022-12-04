@@ -1,0 +1,8 @@
+.input-wrapper {
+    width: 40vw;
+}
+
+.suggestion-item {
+    display: "block"; 
+    text-align: "left";
+}

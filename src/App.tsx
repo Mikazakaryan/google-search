@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import InputForm from "./components/InputForm";
+import { useLinksContext } from "./contexts/links";
+import CardItem from "./components/CardItem";
 
-function App() {
+import "./app.css";
+
+const App = () => {
+  const { data, isLoading } = useLinksContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <InputForm />
+      <div className="content-wrapper">
+        {data?.map((item) => (
+          <CardItem item={item} />
+        ))}
+        {isLoading && <span>Loading ...</span>}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
